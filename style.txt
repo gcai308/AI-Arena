@@ -1,5 +1,8 @@
 Python Coding Style Convention
 
+Please read the Google Coding Style Conventions:
+https://google.github.io/styleguide/pyguide.html
+
 1. Surround top-level functions and classes with two blank lines. Example:
 
 class FirstClass:
@@ -51,6 +54,8 @@ def calculate_variance(numbers):
 7.5 Constant: Use an uppercase single letter, word, or words. Separate words with underscores.
 7.6 Module: Use a short, lowercase word or words. Separate words with underscores.
 7.7 Package: Use a short, lowercase word or words. Don’t separate words with underscores.
+
+
 
 
 
