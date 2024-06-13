@@ -1,0 +1,56 @@
+Python Coding Style Convention
+
+1. Surround top-level functions and classes with two blank lines. Example:
+
+class FirstClass:
+    pass
+
+
+class SecondClass:
+    pass
+
+
+def top_level_function():
+    return None
+
+2. Surround method definitions inside classes with a single blank line. Example:
+
+class ClassWithMethods:
+    def first_method(self):
+        return None
+
+    def second_method(self):
+        return None
+
+3. Use blank lines sparingly inside functions to show clear steps. Example:
+
+def calculate_variance(numbers):
+    sum_numbers = 0
+    for number in numbers:
+        sum_numbers = sum_numbers + number
+    mean = sum_numbers / len(numbers)
+
+    sum_squares = 0
+    for number in numbers:
+        sum_squares = sum_squares + number**2
+    mean_squares = sum_squares / len(numbers)
+
+    return mean_squares - mean**2
+
+4. Limit number of characters of each line to 79.
+
+5. Indentation should be 4 white spaces.
+
+6. Never use tab.
+
+7. Naming styles
+7.1 Function: Use a lowercase word or words. Separate words by underscores.
+7.2 Variable: Use a lowercase single letter, word, or words. Separate words with underscores.
+7.3 Class: Start each word with a capital letter. Don’t separate words with underscores, instead use CamelCase.
+7.4 Method: Use a lowercase word or words. Separate words with underscores.
+7.5 Constant: Use an uppercase single letter, word, or words. Separate words with underscores.
+7.6 Module: Use a short, lowercase word or words. Separate words with underscores.
+7.7 Package: Use a short, lowercase word or words. Don’t separate words with underscores.
+
+
+
