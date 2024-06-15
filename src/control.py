@@ -16,4 +16,4 @@ with gr.Blocks() as demo:
     leaderboard.build_tab()
     single_chat.build_tab()
     
-demo.launch(root_path="/gradio-demo")
+demo.launch(server_name="54.193.186.105")
