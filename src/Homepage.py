@@ -68,4 +68,4 @@ with gr.Blocks(title = "Videobot Arena") as demo:
         gr.Markdown("# About Us")
 
 
-demo.launch(share=True)
+demo.launch(server_name="0.0.0.0")
