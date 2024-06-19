@@ -27,13 +27,6 @@ def build_tab():
             output2=gr.Video(label="Model B")
         with gr.Row():
             abetter_btn = gr.Button("<- A is better")
-            abetter_btn.click(fn=vote, inputs = 0)
-            bbetter_btn = gr.Button("B is better ->")
-            bbetter_btn.click(fn=vote, inputs = 1)
-            tie_btn = gr.Button("Tie")
-            tie_btn.click(fn=vote, inputs = 2)
-            both_btn = gr.Button("Skip")
-            both_btn.click(fn=vote, inputs = 3)
             abetter_btn.click(fn=vote, inputs = abetter, outputs = [])
             bbetter_btn = gr.Button("B is better ->")
             bbetter_btn.click(fn=vote, inputs = bbetter, outputs = [])
