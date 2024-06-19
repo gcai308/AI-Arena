@@ -1,20 +1,17 @@
 import gradio as gr
 import data
 
-current = ''
-
 def generate(prompt):
-    current = prompt
     return "Clutch.mp4","Whiff.mp4" #Use other mp4s
 
-def a_vote():
-    data.add_entry(current, 'test', 'test', 0)
-def b_vote():
-    data.add_entry(current, 'test', 'test', 1)
-def tie_vote():
-    data.add_entry(current, 'test', 'test', 2)
-def both_vote():
-    data.add_entry(current, 'test', 'test', 3)
+def a_vote(prompt):
+    data.add_entry(prompt, 'test', 'test', 0)
+def b_vote(prompt):
+    data.add_entry(prompt, 'test', 'test', 1)
+def tie_vote(prompt):
+    data.add_entry(prompt, 'test', 'test', 2)
+def both_vote(prompt):
+    data.add_entry(prompt, 'test', 'test', 3)
     
     
 def build_tab():
@@ -34,7 +31,6 @@ def build_tab():
             output2=gr.Video(label="Model B")
         with gr.Row():
             abetter_btn = gr.Button("<- A is better")
-            abetter_btn.click(fn=a_vote, inputs = [], outputs = [])
             bbetter_btn = gr.Button("B is better ->")
             bbetter_btn.click(fn=b_vote, inputs = [], outputs = [])
             tie_btn = gr.Button("Tie")
@@ -56,3 +52,8 @@ def build_tab():
             Terms of Service
             """
             )
+
+        abetter_btn.click(fn=a_vote, inputs = [text], outputs = [])
+        bbetter_btn.click(fn=b_vote, inputs = [text], outputs = [])
+        both_btn.click(fn=both_vote, inputs = [text], outputs = [])
+        tie_btn.click(fn=tie_vote, inputs = [text], outputs = [])

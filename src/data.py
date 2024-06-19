@@ -26,8 +26,15 @@ def vote_data():
                                  charset = 'utf8mb4',
                                  cursorclass = pymysql.cursors.Cursor)
     with connection.cursor() as cursor:
+        sql = "SELECT COUNT(*) FROM `votes`"
+        cursor.execute(sql)
+        tlen = cursor.fetchone()
+        votelist = []
         sql = "SELECT * FROM `votes`"
         cursor.execute(sql)
-        result = cursor.fetchone()
-        print(result)
+        for i in range(tlen[0]):
+            result = list(cursor.fetchone())
+            result[1] = result[1].strftime("%m/%d/%Y, %H:%M:%S")
+            votelist.append(result)
+        return votelist
     
