@@ -2,6 +2,10 @@ import gradio as gr
 import data
 
 current = ''
+abetter = 0
+bbetter = 1
+tie = 2
+both = 3
 
 def generate(prompt):
     current = prompt
@@ -30,6 +34,13 @@ def build_tab():
             tie_btn.click(fn=vote, inputs = 2)
             both_btn = gr.Button("Skip")
             both_btn.click(fn=vote, inputs = 3)
+            abetter_btn.click(fn=vote, inputs = abetter, outputs = [])
+            bbetter_btn = gr.Button("B is better ->")
+            bbetter_btn.click(fn=vote, inputs = bbetter, outputs = [])
+            tie_btn = gr.Button("Tie")
+            tie_btn.click(fn=vote, inputs = tie, outputs = [])
+            both_btn = gr.Button("Skip")
+            both_btn.click(fn=vote, inputs = both, outputs = [])
         with gr.Row():
             text = gr.Textbox(label="Enter your prompt and hit ENTER", min_width=1100)
             submit_btn = gr.Button("Submit")
