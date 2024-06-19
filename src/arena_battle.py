@@ -20,11 +20,15 @@ def both_vote():
 def build_tab():
     with gr.Tab("Arena (battle)"):
         with gr.Row():
-            gr.Markdown(
-            """
-            # Videobot Arena
-            Start typing below to compare models
-            """)
+             gr.Markdown(
+            "Instructions for Arena Mode:"
+            + "\n - Give a prompt to two anonymous, randomly selected video b"
+            + "ots\n - Watch both videos and cast a vote for which is better." 
+            + "If you can't decide, press \“skip\” to vote for neither or \“t"
+            + "ie\” to vote for both\n - You can keep generating new videos f"
+            + "rom the same prompt or edit an existing prompt for a fresh com"
+            + "parison\n - be sure to check out the leaderboard to view the t"
+            + "op video bot stats!")
         with gr.Row():
             output1=gr.Video(label="Model A")
             output2=gr.Video(label="Model B")
