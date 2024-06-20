@@ -3,19 +3,24 @@ const container = document.querySelector('.container');
 const URL = 'https://dog.ceo/api/breeds/image/random'
 
 // get the images
-function loadImages(numImages = 10) {
+function loadImages(numImages = 2) {
     let i=0;
+    const sect = document.createElement('section');
     while(i < numImages) {
         fetch('https://dog.ceo/api/breeds/image/random')
         .then(response=>response.json())
         .then(data=> {
             // console.log(data.message)
+            const sect = document.createElement('section');
             const img =  document.createElement('img');
+            const like = document.createElement('button');
             img.src = `${data.message}`
             container.appendChild(img)
+            container.appendChild(like)
         })
         i++;
     }   
+    container.appendChild(sect)
 }
 /*
 function loadImages(numImages = 10) {
