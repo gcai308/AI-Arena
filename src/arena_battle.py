@@ -1,7 +1,28 @@
 import gradio as gr
 import data
+import urllib.request
 
 def generate(prompt):
+    current = prompt
+    url = "https://www.www.youtube.com/results?search_query="
+    youtubeQuery = prompt.split()
+    for i in youtubeQuery:
+        url += i + "+"
+    url = url[0:url.len() - 1]
+    webUrl = urllib.request.urlopen('https://www.www.youtube.com/results?search_query=' + current)
+    htmldata = webUrl.read()
+    link1 = ""
+    link2 = ""
+    index = 0
+    while (htmldata[index] != "/"): 
+        index = htmldata.find("yt-simple-endpoint inline-block style-scope ytd-thumbnail", index) + 109
+    link1 = htmldata[index : htmldata.find("\"", index)]
+    index = index + 1
+    while (htmldata[index] != "/"): 
+        index = htmldata.find("yt-simple-endpoint inline-block style-scope ytd-thumbnail", index) + 109
+    link2 = htmldata[index : htmldata.find("\"", index)]
+    
+
     return "Clutch.mp4","Whiff.mp4" #Use other mp4s
 
 def a_vote(prompt):
