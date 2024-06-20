@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>AI project</title>
+</head>
+<body onLoad="openDefault()">
+    <script>
+        function openDefault() {
+            var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById('Arena').style.display = "block";
+        }
+    </script>
+    <script> openDefault()</script>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'Arena')">Arena</button>
+        <button class="tablinks" onclick="openCity(event, 'Single Model')">Single Model</button>
+        <button class="tablinks" onclick="openCity(event, 'Leaderboard')">Leaderboard</button>
+        <button class="tablinks" onclick="openCity(event, 'About Us')">About Us</button>
+      </div>
+      
+      <div id="Arena" class="tabcontent">
+        <h3>Arena</h3>
+        <p>Instructions for Arena Mode:</p>
+        <p> - Give a prompt to two anonymous, randomly selected video bots</p>
+        <p> - Watch both videos and cast a vote for which is better. If you can't decide, press “skip” to vote for neither or “tie” to vote for both</p>
+        <p> - You can keep generating new videos from the same prompt or edit an existing prompt for a fresh comparison</p>
+        <p> - Be sure to check out the leaderboard to view the top video bot stats!</p>
+        <div class="container"></div> 
+        <script src="arena.js"></script>
+      </div>
+      
+      <div id="Single Model" class="tabcontent">
+        <h3>Single Model</h3>
+        <p>Instructions for Single Bot Mode:</p>
+        <p>This mode lets you freely access a selection of video bots all in one place.</p>
+        <p></p>
+        <p>Simply select your model from the drop-down menu, enter a prompt of your choice, and press Enter</p> 
+      </div>
+      
+      <div id="Leaderboard" class="tabcontent">
+        <h3>Leaderboard</h3>
+        
+      </div>   
+
+      <div id="About Us" class="tabcontent">
+        <h3>About Us</h3>
+        <p>About Us:</p>
+        <p></p>
+        <p>Videobot Arena is a free service allowing users to access, compare, and rank an assortment of text-to-video AI models. Voting provides valuable data for both consumers selecting models and companies looking to improve their products.</p>
+        <p></p>
+        <p>Project contributors: Michael Luo, [his fellow graduates], Jeffrey Luo, Garrett Cai, Ruofei Yang</p>      </div>  
+
+      <script src="tabs.js" ></script>
+</body>
+</html>
