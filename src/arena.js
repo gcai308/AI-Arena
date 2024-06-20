@@ -6,21 +6,31 @@ const URL = 'https://dog.ceo/api/breeds/image/random'
 function loadImages(numImages = 2) {
     let i=0;
     const sect = document.createElement('section');
-    while(i < numImages) {
+    var index = Math.floor(Math.random() * 4)
+    var colorslist = ['blue','red','green','yellow','brown']
+    var mycolor = colorslist[index]
+    sect.style.setProperty('background-color', mycolor, 'important');
+    sect.className = "scroller";
+    container.appendChild(sect)
+    while(i < 2) {
         fetch('https://dog.ceo/api/breeds/image/random')
         .then(response=>response.json())
         .then(data=> {
             // console.log(data.message)
-            const sect = document.createElement('section');
-            const img =  document.createElement('img');
-            const like = document.createElement('button');
-            img.src = `${data.message}`
-            container.appendChild(img)
-            container.appendChild(like)
+              //const holder = document.createElement('span');
+              //holder.className = "holder";
+            //    index = Math.floor(Math.random() * 4)
+            //    mycolor = colorslist[index]
+              //holder.style.setProperty('background-color', mycolor, 'important');
+              //container.appendChild(holder);
+              const img =  document.createElement('img');
+              //const like = document.createElement('button');
+              img.src = `${data.message}`
+               sect.appendChild(img)
+               //sect.appendChild(like)
         })
         i++;
     }   
-    container.appendChild(sect)
 }
 /*
 function loadImages(numImages = 10) {
@@ -40,7 +50,7 @@ function loadImages(numImages = 10) {
     }   
 }
 */
-loadImages(100);
+loadImages(2);
 
 // listen for scroll event and load more images if we reach the bottom of window
 window.addEventListener('scroll', ()=> {

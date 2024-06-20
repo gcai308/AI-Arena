@@ -4,12 +4,13 @@
 }
 
 img {
-    margin:25px;
-    width:600px;
-    height:400px;
+    margin:40% 10%;
+    width:30%;
+    height:20%;
 }
 
 .tab {
+    position: fixed;
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
@@ -19,7 +20,7 @@ img {
   .tab button {
     background-color: inherit;
     float: left;
-    border: none;
+    border: 1px solid black;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -27,6 +28,16 @@ img {
     font-size: 17px;
   }
   
+  html {
+    scroll-snap-type: block mandatory;
+  }
+
+  .scroller {
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+  }
+
   /* Change background color of buttons on hover */
   .tab button:hover {
     background-color: #ddd;
@@ -38,9 +49,25 @@ img {
   }
   
   /* Style the tab content */
-.tabcontent {
+.tabcontent { 
     display: none;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
   }
+
+.topbar {
+  width: 100vw;
+  height: 20vh;
+  background-color: white;
+  position: fixed;
+  bottom: 75%;
+}
+
+.holder {
+  width: 100px;
+  height: 100px;
+  border: 3px solid black;
+  
+}
+
