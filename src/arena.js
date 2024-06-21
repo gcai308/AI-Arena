@@ -12,7 +12,11 @@ function loadImages() {
     sect.className = "scroller";
     container.appendChild(sect)
 
-    const liked = new Boolean(false);
+    var liked = [new Boolean(false), new Boolean(false)];
+
+    var like_labels = [document.createElement('label'), document.createElement('label')];
+
+    var comment_labels = [document.createElement('label'), document.createElement('label')];
 
     const holders = [document.createElement('span'), document.createElement('span')];
 
@@ -21,6 +25,8 @@ function loadImages() {
     const likes = [document.createElement('button'), document.createElement('button')];
 
     const comments = [document.createElement('button'), document.createElement('button')];
+
+    var c_sections = [document.createElement('span'), document.createElement('span')];
 
     const shares = [document.createElement('button'), document.createElement('button')];
 
@@ -59,34 +65,66 @@ function loadImages() {
         }
     )
 
-    function likeClickHandler() {
-        if (liked == false) {
-    
+    function leftClick() {
+        if (liked[0] == false) {
+
+            likes[0].innerHTML = '<img src="../images/heartFilled.png" />';
+            button_arrays[0].appendChild(like_labels[0])
             button_arrays[0].appendChild(comments[0])
+            button_arrays[0].appendChild(comment_labels[0])
             button_arrays[0].appendChild(shares[0])
     
-            button_arrays[1].appendChild(comments[1])
-            button_arrays[1].appendChild(shares[1])
-            liked = new Boolean(true);
+            liked[0] = new Boolean(true);
         }
+    }
+
+    function rightClick() {
+        if (liked[1] == false) {
+            likes[1].innerHTML = '<img src="../images/heartFilled.png" />';
+            button_arrays[1].appendChild(like_labels[1])
+            button_arrays[1].appendChild(comments[1])
+            button_arrays[1].appendChild(comment_labels[1])
+            button_arrays[1].appendChild(shares[1])
+
+            liked[1] = new Boolean(true);
+        }
+    }
+
+    function leftComment() {
+        holders[0].appendChild(c_sections[0]);
+    }
+    
+    function rightComment() {
+        holders[1].appendChild(c_sections[1]);
     }
         
     while(i < 2) {
         holders[i].className = "holder";
-    
-            
+        c_sections[i].className = "comment-section";
         button_arrays[i].className = "button-array";
-    
-            sect.appendChild(holders[i])
-            button_arrays[i].appendChild(likes[i])
+
+        likes[i].innerHTML = '<img src="../images/heartEmpty.png" />';
+        comments[i].innerHTML = '<img src="../images/comment.png" />';
+        shares[i].innerHTML = '<img src="../images/share.png" />';
+        like_labels[i].innerHTML = Math.floor(Math.random() * 1000);
+        comment_labels[i].innerHTML = Math.floor(Math.random() * 1000);
+        sect.appendChild(holders[i])
+        button_arrays[i].appendChild(likes[i])
         sect.appendChild(holders[i]);
         button_arrays[i].appendChild(likes[i])
     
-        likes[i].addEventListener("click", likeClickHandler)
+        
     
     
         i++;
     } 
+
+    likes[0].addEventListener("click", leftClick);
+    likes[1].addEventListener("click", rightClick);
+
+    comments[0].addEventListener("click", leftComment);
+    comments[1].addEventListener("click", rightComment);
+
 }
 
 function submitText() {

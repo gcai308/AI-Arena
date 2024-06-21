@@ -77,18 +77,25 @@ img {
 .button-array button {
   width: 50px;
   height: 50px;
-  
+  margin: 0px 0px 10px 0px;
+
 }
 
 .button-array {
   margin: 50% 0% 0% 10%;
   width: 50px;
-  height: 150px;
+  height: 250px;
   border: 2px solid black;
 }
 
 .button-array button:hover {
   background-color: #adadad;
+}
+
+.comment-section {
+  border: 2px solid black;
+  width: 100%;
+  height: 100%;
 }
 
 
