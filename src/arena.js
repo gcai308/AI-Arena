@@ -32,22 +32,30 @@ function loadImages() {
     fetch(url)
         .then(response=>response.json())
         .then(data=> {
-            // console.log(data.message)
-              const img =  document.createElement('img');
-              img.src = `${data.message}`
-              holders[0].appendChild(img)
-              holders[0].appendChild(button_arrays[0])
+            // console.log(data.url)
+            const img =  document.createElement('img');
+            if (prompt.length == 0) {
+                img.src = `${data.message}`
+            } else {
+                img.src = `${data[0].url}`
+            }
+            holders[0].appendChild(img)
+            holders[0].appendChild(button_arrays[0])
         }
     )
 
     fetch(url)
         .then(response=>response.json())
         .then(data=> {
-            // console.log(data.message)
-              const img =  document.createElement('img');
-              img.src = `${data.message}`
-              holders[1].appendChild(img)
-              holders[1].appendChild(button_arrays[1])
+            // console.log(data.url)
+            const img =  document.createElement('img');
+            if (prompt.length == 0) {
+                img.src = `${data.message}`
+            } else {
+                img.src = `${data[0].url}`
+            }
+            holders[1].appendChild(img)
+            holders[1].appendChild(button_arrays[1])
         }
     )
 
