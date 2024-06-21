@@ -26,6 +26,9 @@
         function openArenaInstructions() {
             document.getElementById('Arena Info').style.display = "block";
         }
+        function closeArenaInstructions() {
+            document.getElementById('Arena Info').style.display = "none";
+        }
     </script>
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Arena')">Arena</button>
@@ -36,8 +39,9 @@
       
     <div id="Arena" class="tabcontent">
         <div class = "topbar">
-            <button class="infobutton" onclick="openArenaInstructions()">( i )</button>
+            <button onclick="openArenaInstructions()">( i )</button>
             <div id="Arena Info">
+                <button onclick="closeArenaInstructions()">( x )</button>
                 <h3>Arena Mode Info:</h3>
                 <p> - Each video diplayed is made by an anonymous, randomly chosen AI model</p>                  <p> - After watching a video you enjoyed, you can like by clicking the heart icon</p>
                 <p> - You can keep generating new videos by scrolling down</p>
