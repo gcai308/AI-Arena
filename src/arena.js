@@ -26,7 +26,7 @@ function loadImages() {
     fetch('https://dog.ceo/api/breeds/image/random')
         .then(response=>response.json())
         .then(data=> {
-            // console.log(data.message)
+              //console.log(data.message)
               const img =  document.createElement('img');
               img.src = `${data.message}`
               holders[0].appendChild(img)
@@ -61,7 +61,7 @@ function loadImages() {
             
             button_arrays[i].className = "button-array";
     
-            sect.appendChild(holders[i]);
+            sect.appendChild(holders[i])
             button_arrays[i].appendChild(likes[i])
     
             likes[i].addEventListener("click", likeClickHandler)
@@ -75,8 +75,8 @@ function submitText() {
 
 }
 
-function loadGenerated() {
-    
+function clear() {
+    document.getElementById("arena_container").innerHTML = "";
 }
 
 function openArenaInstructions() {
