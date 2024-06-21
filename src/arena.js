@@ -71,6 +71,14 @@ function loadImages() {
         } 
 }
 
+function submitText() {
+
+}
+
+function loadGenerated() {
+    
+}
+
 function openArenaInstructions() {
     document.getElementById('Arena Info').style.display = "block";
 }
