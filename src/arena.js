@@ -1,6 +1,8 @@
 const container = document.querySelector('.container');
 
-const URL = 'https://dog.ceo/api/breeds/image/random'
+//const URL = 'https://dog.ceo/api/breeds/image/random'
+
+let prompt = "";
 
 // get the images
 function loadImages() {
@@ -22,8 +24,12 @@ function loadImages() {
 
     const shares = [document.createElement('button'), document.createElement('button')];
 
+    let url='https://dog.ceo/api/breeds/image/random';
+    if (prompt.length > 0) {
+        url='https://api.thecatapi.com/v1/images/search';
+    }
 
-    fetch('https://dog.ceo/api/breeds/image/random')
+    fetch(url)
         .then(response=>response.json())
         .then(data=> {
               //console.log(data.message)
@@ -31,9 +37,10 @@ function loadImages() {
               img.src = `${data.message}`
               holders[0].appendChild(img)
               holders[0].appendChild(button_arrays[0])
-        })
+        }
+    )
 
-        fetch('https://dog.ceo/api/breeds/image/random')
+    fetch(url)
         .then(response=>response.json())
         .then(data=> {
             // console.log(data.message)
@@ -41,38 +48,42 @@ function loadImages() {
               img.src = `${data.message}`
               holders[1].appendChild(img)
               holders[1].appendChild(button_arrays[1])
-        })
-
-        function likeClickHandler() {
-            if (liked == false) {
-    
-                button_arrays[0].appendChild(comments[0])
-                button_arrays[0].appendChild(shares[0])
-    
-                button_arrays[1].appendChild(comments[1])
-                button_arrays[1].appendChild(shares[1])
-                liked = new Boolean(true);
-            }
         }
+    )
+
+    function likeClickHandler() {
+        if (liked == false) {
+    
+            button_arrays[0].appendChild(comments[0])
+            button_arrays[0].appendChild(shares[0])
+    
+            button_arrays[1].appendChild(comments[1])
+            button_arrays[1].appendChild(shares[1])
+            liked = new Boolean(true);
+        }
+    }
         
-        while(i < 2) {
-            holders[i].className = "holder";
+    while(i < 2) {
+        holders[i].className = "holder";
     
             
-            button_arrays[i].className = "button-array";
+        button_arrays[i].className = "button-array";
     
             sect.appendChild(holders[i])
             button_arrays[i].appendChild(likes[i])
+        sect.appendChild(holders[i]);
+        button_arrays[i].appendChild(likes[i])
     
-            likes[i].addEventListener("click", likeClickHandler)
+        likes[i].addEventListener("click", likeClickHandler)
     
     
-            i++;
-        } 
+        i++;
+    } 
 }
 
 function submitText() {
-
+    prompt = document.getElementById('Prompt Box').value;
+    clear()
 }
 
 function clear() {
