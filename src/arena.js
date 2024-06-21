@@ -77,6 +77,8 @@ function loadImages() {
             
         button_arrays[i].className = "button-array";
     
+            sect.appendChild(holders[i])
+            button_arrays[i].appendChild(likes[i])
         sect.appendChild(holders[i]);
         button_arrays[i].appendChild(likes[i])
     
@@ -92,8 +94,8 @@ function submitText() {
     clear()
 }
 
-function loadGenerated() {
-    
+function clear() {
+    document.getElementById("arena_container").innerHTML = "";
 }
 
 function openArenaInstructions() {
