@@ -71,6 +71,14 @@ function loadImages() {
         } 
 }
 
+function openArenaInstructions() {
+    document.getElementById('Arena Info').style.display = "block";
+}
+
+function closeArenaInstructions() {
+    document.getElementById('Arena Info').style.display = "none";
+}
+
 
 /*
 function loadImages(numImages = 10) {

@@ -25,11 +25,3 @@ function openDefault() {
     document.getElementById('Arena').style.display = "block";
     document.getElementById('Arena Info').style.display = "none";
 }
-
-function openArenaInstructions() {
-    document.getElementById('Arena Info').style.display = "block";
-}
-
-function closeArenaInstructions() {
-    document.getElementById('Arena Info').style.display = "none";
-}
