@@ -68,11 +68,7 @@ function loadImages() {
     
     
             i++;
-        }  
-
-
-
-
+        } 
 }
 
 
