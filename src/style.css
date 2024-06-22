@@ -3,7 +3,7 @@
     flex-wrap: wrap;
 }
 
-img {
+.holder img {
     margin:50% 0% 0% 10%;
     width:40%;
     height:20%; 
@@ -37,7 +37,6 @@ img {
     width: 100vw;
     height: 100vh;
     scroll-snap-align: start;
-    border: 2px solid black;
   }
 
   /* Change background color of buttons on hover */
@@ -68,10 +67,10 @@ img {
 
 .holder {
   display: flex;
+  margin-top: 20%;
   width: 50%;
-  height: 100%;
   border: 2px solid black;
-  
+  bottom: 0;
 }
 
 .button-array button {
@@ -94,8 +93,8 @@ img {
 
 .comment-section {
   border: 2px solid black;
-  width: 100%;
   height: 100%;
+  overflow-y: auto;
 }
 
 

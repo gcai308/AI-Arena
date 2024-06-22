@@ -8,17 +8,17 @@ let prompt = "";
 function loadImages() {
     let i=0;
 
-    const sect = document.createElement('section');
+    const sect = document.createElement('div');
     sect.className = "scroller";
     container.appendChild(sect)
 
-    var liked = [new Boolean(false), new Boolean(false)];
+    let liked = [new Boolean(false), new Boolean(false)];
 
-    var like_labels = [document.createElement('label'), document.createElement('label')];
+    let like_labels = [document.createElement('label'), document.createElement('label')];
 
     var comment_labels = [document.createElement('label'), document.createElement('label')];
 
-    const holders = [document.createElement('span'), document.createElement('span')];
+    const holders = [document.createElement('section'), document.createElement('section')];
 
     const button_arrays = [document.createElement('span'), document.createElement('span')];
     
@@ -26,7 +26,7 @@ function loadImages() {
 
     const comments = [document.createElement('button'), document.createElement('button')];
 
-    var c_sections = [document.createElement('span'), document.createElement('span')];
+    let c_sections = [document.createElement('section'), document.createElement('section')];
 
     const shares = [document.createElement('button'), document.createElement('button')];
 
@@ -47,6 +47,7 @@ function loadImages() {
             }
             holders[0].appendChild(img)
             holders[0].appendChild(button_arrays[0])
+            holders[0].appendChild(c_sections[0])
         }
     )
 
@@ -62,6 +63,7 @@ function loadImages() {
             }
             holders[1].appendChild(img)
             holders[1].appendChild(button_arrays[1])
+            holders[1].appendChild(c_sections[1])
         }
     )
 
@@ -91,14 +93,25 @@ function loadImages() {
     }
 
     function leftComment() {
-        holders[0].appendChild(c_sections[0]);
+        if (c_sections[0].style.display != 'none') {
+            c_sections[0].style.display = 'none'
+        }
+        else {
+            c_sections[0].style.display = 'flow'
+        }
     }
     
     function rightComment() {
-        holders[1].appendChild(c_sections[1]);
+        if (c_sections[1].style.display != 'none') {
+            c_sections[1].style.display = 'none'
+        }
+        else {
+            c_sections[1].style.display = 'flow'
+        }
     }
         
     while(i < 2) {
+
         holders[i].className = "holder";
         c_sections[i].className = "comment-section";
         button_arrays[i].className = "button-array";
@@ -108,6 +121,10 @@ function loadImages() {
         shares[i].innerHTML = '<img src="../images/share.png" />';
         like_labels[i].innerHTML = Math.floor(Math.random() * 1000);
         comment_labels[i].innerHTML = Math.floor(Math.random() * 1000);
+
+        c_sections[i].style.display = 'none';
+
+        loadComments(c_sections[i]);
         sect.appendChild(holders[i])
         button_arrays[i].appendChild(likes[i])
         sect.appendChild(holders[i]);
@@ -124,6 +141,115 @@ function loadImages() {
 
     comments[0].addEventListener("click", leftComment);
     comments[1].addEventListener("click", rightComment);
+
+}
+
+function loadComments(c_section) {
+    
+       let header = document.createElement('header');
+       let textbox = document.createElement('input');
+       let submit = document.createElement('button');
+       let num_comments = Math.floor(Math.random() * 10)
+        textbox.type = "text";
+        textbox.placeholder = "Add a comment...";
+        header.innerHTML = 'Comments ';
+        submit.innerHTML = 'Enter';
+        submit.onclick = send_comment;
+        c_section.appendChild(header);
+        c_section.appendChild(textbox);
+        c_section.appendChild(submit);
+
+        function send_comment() {
+            textbox.value = "";
+        }
+
+       for (let i = 0; i < num_comments; i++) {
+            const comment = 'lorem ipsum dolor sit amet, consectetur adipiscing';
+            const reply_text = 'lorem ipsum dolor sit amet';
+            const username = 'guest'
+            const date = '4/19'
+
+            const block = document.createElement('div');
+            const pfp = document.createElement('img');
+            const info = document.createElement('p');
+            const commenttext = document.createElement('p');
+            const like = document.createElement('button');
+            const reply = document.createElement('button');
+            const show = document.createElement('button');
+            const replies = document.createElement('div');
+
+            let is_liked = new Boolean(false);
+
+
+            function show_replies() {
+                if (replies.style.display != 'none')
+                    replies.style.display = 'none'
+                else 
+                    replies.style.display = 'flow';
+            }
+
+            function set_receiver() {
+            }
+
+            function comment_liked() {
+                if (is_liked == false) 
+                    like.innerHTML = '<img src="../images/heartFilled.png" />'
+
+                else 
+                    like.innerHTML = '<img src="../images/heartEmpty.png" />'
+                is_liked = new Boolean(is_liked == false);
+                
+            }
+
+            for (let j = 0; j < num_comments / 2; j++) {
+                let is_reply_liked = new Boolean(false);
+                function reply_liked() {
+                    if (is_reply_liked == false) 
+                        like_reply.innerHTML = '<img src="../images/heartFilled.png" />'
+
+                    else 
+                        like_reply.innerHTML = '<img src="../images/heartEmpty.png" />'
+                    is_reply_liked = new Boolean(is_reply_liked == false);
+                
+                }
+                const user_reply = document.createElement('p');
+                const like_reply = document.createElement('button');
+
+                like_reply.className = 'comment-like-button';
+                like_reply.innerHTML = '<img src="../images/heartEmpty.png" />';
+                like_reply.onclick = reply_liked;
+
+                user_reply.innerHTML = reply_text;
+                replies.appendChild(user_reply);
+                replies.appendChild(like_reply);
+            }
+
+            like.className = "comment-like-button";
+            pfp.className = "pfp";
+            replies.style.display = 'none';
+            show.onclick = show_replies;
+            reply.onclick = set_receiver;
+            like.onclick = comment_liked;
+
+
+            commenttext.innerHTML = comment;
+            info.innerHTML = username + ' ' + date;
+            pfp.src = '../images/share.png';
+            like.innerHTML = '<img src="../images/heartEmpty.png" />';
+            reply.innerHTML = 'Reply to comment'
+            show.innerHTML = 'replies'
+
+            block.append(pfp);
+            block.append(info);
+            block.append(commenttext);
+            block.append(like);
+            block.append(reply);
+            block.append(show);
+            block.append(replies);
+            c_section.appendChild(block);
+       }
+
+     
 
 }
 
