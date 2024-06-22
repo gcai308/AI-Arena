@@ -3,17 +3,18 @@
     flex-wrap: wrap;
 }
 
-.holder img {
-    margin:50% 0% 0% 10%;
-    width:40%;
-    height:20%; 
+html {
+  scroll-snap-type: block mandatory;
 }
+
 
 .tab {
     position: fixed;
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
+    top: 0;
+    left: 0;
   }
   
   /* Style the buttons inside the tab */
@@ -27,10 +28,24 @@
     transition: 0.3s;
     font-size: 17px;
   }
-  
-  html {
-    scroll-snap-type: block mandatory;
-  }
+
+    /* Style the tab content */
+.tabcontent { 
+  display: none;
+  margin-top: 50px;
+  padding: 6px 12px;
+  border: 1px solid blue;
+}
+
+.topbar {
+  background-color: white;
+  position: fixed;
+  border: 1px solid red;
+  left: 0%;
+  top: 51px;
+  z-index: 99;
+}
+
 
   .scroller {
     display: flex;
@@ -38,6 +53,27 @@
     height: 100vh;
     scroll-snap-align: start;
   }
+
+
+
+.holder {
+  position: relative;
+  display: flex;
+  margin-top: 75px;
+  width: 50%;
+  border: 1px solid black;
+  bottom: 0;
+}
+
+  .holder img {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10%;
+    max-width: 50%;
+    max-height: 80%;
+    width: auto;
+    height: auto; 
+}
 
   /* Change background color of buttons on hover */
   .tab button:hover {
@@ -49,29 +85,6 @@
     background-color: #ccc;
   }
   
-  /* Style the tab content */
-.tabcontent { 
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-  }
-
-.topbar {
-  width: 100vw;
-  height: 20vh;
-  background-color: white;
-  position: fixed;
-  bottom: 75%;
-}
-
-.holder {
-  display: flex;
-  margin-top: 20%;
-  width: 50%;
-  border: 2px solid black;
-  bottom: 0;
-}
 
 .button-array button {
   width: 50px;
@@ -81,20 +94,35 @@
 }
 
 .button-array {
-  margin: 50% 0% 0% 10%;
+  margin: auto 20px;
   width: 50px;
   height: 250px;
-  border: 2px solid black;
+  border: 1px solid black;
+  text-align: center;
 }
+
 
 .button-array button:hover {
   background-color: #adadad;
 }
 
 .comment-section {
-  border: 2px solid black;
-  height: 100%;
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  right: 0%;
+  left: 50%;
+  border: 1px solid black;
   overflow-y: auto;
+  background-color: white;
+  z-index: 100;
+  padding: 5%;
+}
+
+.comment-section img {
+  max-height: 50px;
+  max-width: 50px;
+  border: 1px solid black;
 }
 
 

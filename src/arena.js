@@ -93,21 +93,11 @@ function loadImages() {
     }
 
     function leftComment() {
-        if (c_sections[0].style.display != 'none') {
-            c_sections[0].style.display = 'none'
-        }
-        else {
-            c_sections[0].style.display = 'flow'
-        }
+        c_sections[0].style.display = 'flow'
     }
     
     function rightComment() {
-        if (c_sections[1].style.display != 'none') {
-            c_sections[1].style.display = 'none'
-        }
-        else {
-            c_sections[1].style.display = 'flow'
-        }
+        c_sections[1].style.display = 'flow'
     }
         
     while(i < 2) {
@@ -149,18 +139,26 @@ function loadComments(c_section) {
        let header = document.createElement('header');
        let textbox = document.createElement('input');
        let submit = document.createElement('button');
+       let close = document.createElement('button');
        let num_comments = Math.floor(Math.random() * 10)
         textbox.type = "text";
         textbox.placeholder = "Add a comment...";
         header.innerHTML = 'Comments ';
         submit.innerHTML = 'Enter';
+        close.innerHTML = 'Close';
         submit.onclick = send_comment;
+        close.onclick = close_section;
+        c_section.appendChild(close);
         c_section.appendChild(header);
         c_section.appendChild(textbox);
         c_section.appendChild(submit);
 
         function send_comment() {
             textbox.value = "";
+        }
+
+        function close_section() {
+            c_section.style.display = 'none';
         }
 
        for (let i = 0; i < num_comments; i++) {
@@ -234,7 +232,7 @@ function loadComments(c_section) {
 
             commenttext.innerHTML = comment;
             info.innerHTML = username + ' ' + date;
-            pfp.src = '../images/share.png';
+            pfp.src = '../images/pfp.png';
             like.innerHTML = '<img src="../images/heartEmpty.png" />';
             reply.innerHTML = 'Reply to comment'
             show.innerHTML = 'replies'
