@@ -17,17 +17,21 @@
       
     <div id="Arena" class="tabcontent">
         <div class = "topbar">
-            <button onclick="openArenaInstructions()">( i )</button>
-            <div id="Arena Info">
-                <button onclick="closeArenaInstructions()">( x )</button>
-                <h3>Arena Mode Info:</h3>
-                <p> - Each video diplayed is made by an anonymous, randomly chosen AI model</p>
-                <p> - After watching a video you enjoyed, you can like by clicking the heart icon</p>
-                <p> - You can keep generating new videos by scrolling down</p>
-                <p> - Be sure to check out the leaderboard to view the top video bot stats!</p>
+            <div id = "topbar_buttons">
+                <button onclick="openArenaInstructions()">( i )</button>
+                <button id = "close_instructions_button" onclick="closeArenaInstructions()">( x )</button>
+                <div id="arena_info">
+                    <h3>Arena Mode Info:</h3>
+                    <p> - Each video diplayed is made by an anonymous, randomly chosen AI model</p>
+                    <p> - After watching a video you enjoyed, you can like by clicking the heart icon</p>
+                    <p> - You can keep generating new videos by scrolling down</p>
+                    <p> - Be sure to check out the leaderboard to view the top video bot stats!</p>
+                </div>
             </div>
-            <input id="Prompt Box" placeholder="Enter a prompt here" type="text"></input>
-            <button onclick="submitText()">Enter</button>
+            <div>
+                <input id="Prompt Box" placeholder="Enter a prompt here" type="text"></input>
+                <button onclick="submitText()">Enter</button>
+            </div>
         </div>
         <div class="container" id = "arena_container">
         </div> 

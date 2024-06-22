@@ -16,7 +16,7 @@ html {
     background-color: #1f2734;
     top: 0;
     left: 0;
-    z-index: 98;
+    z-index: 101;
   }
   
   header {
@@ -60,22 +60,62 @@ html {
   display: none;
   margin-top: 50px;
   padding: 6px 12px;
-  border: 1px solid #9da4e6;
+  border: solid white;
   background-color: #192232;
 }
 
 h3 {
   color: white;
 }
+
 .topbar {
-  padding: 6px 12px;
+  display: block;
+  padding: 70px 20px 0px;
+  margin: 0;
   background-color: #192232;
   color: white;
   position: fixed;
   border: 1px solid #9da4e6;
-  left: 0%;
-  top: 51px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
   z-index: 99;
+}
+
+.topbar div {
+  display: flex;
+  flex-direction: horizontal;
+  margin-bottom: 20px;
+}
+
+#arena_info  {
+  display: none;
+  flex-grow: 4;
+  margin-left: 50px;
+}
+
+#close_instructions_button {
+  display: none;
+}
+
+#topbar_buttons {
+  flex-grow: 2;
+}
+
+#topbar_buttons button {
+  max-height : 25px;
+  margin-right: 20px;
+  flex-grow: 0;
+}
+
+.topbar input {
+  height: 81px;
+  flex-grow: 10;
+  max-width: 90%;
+}
+
+.topbar button {
+  flex-grow: 1;
 }
 
 
@@ -93,7 +133,6 @@ h3 {
   display: flex;
   margin-top: 75px;
   width: 50%;
-  border: 1px solid #9da4e6;
   background-color: #10151e;
   bottom: 0;
 }

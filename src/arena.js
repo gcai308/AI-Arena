@@ -279,11 +279,13 @@ function clear() {
 }
 
 function openArenaInstructions() {
-    document.getElementById('Arena Info').style.display = "block";
+    document.getElementById('arena_info').style.display = "block";
+    document.getElementById('close_instructions_button').style.display = "block";
 }
 
 function closeArenaInstructions() {
-    document.getElementById('Arena Info').style.display = "none";
+    document.getElementById('arena_info').style.display = "none";
+    document.getElementById('close_instructions_button').style.display = "none";
 }
 
 
