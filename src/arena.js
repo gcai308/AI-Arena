@@ -169,7 +169,7 @@ function loadComments(c_section) {
 
             const block = document.createElement('div');
             const pfp = document.createElement('img');
-            const info = document.createElement('p');
+            const info = document.createElement('label');
             const commenttext = document.createElement('p');
             const like = document.createElement('button');
             const reply = document.createElement('button');
@@ -199,7 +199,7 @@ function loadComments(c_section) {
                 
             }
 
-            for (let j = 0; j < num_comments / 2; j++) {
+            for (let j = 0; j < num_comments / 2 + 1; j++) {
                 let is_reply_liked = new Boolean(false);
                 function reply_liked() {
                     if (is_reply_liked == false) 
@@ -210,18 +210,28 @@ function loadComments(c_section) {
                     is_reply_liked = new Boolean(is_reply_liked == false);
                 
                 }
+                const reply_pfp = document.createElement('img');
+                const reply_info = document.createElement('label');
                 const user_reply = document.createElement('p');
                 const like_reply = document.createElement('button');
 
+                reply_pfp.src = '../images/pfp.png';
                 like_reply.className = 'comment-like-button';
+
+                reply_info.innerHTML = username + ' ' + date;
                 like_reply.innerHTML = '<img src="../images/heartEmpty.png" />';
                 like_reply.onclick = reply_liked;
-
+                
                 user_reply.innerHTML = reply_text;
-                replies.appendChild(user_reply);
+
+                replies.appendChild(reply_pfp);
+                replies.appendChild(document.createElement('br'));
+                replies.appendChild(reply_info);
                 replies.appendChild(like_reply);
+                replies.appendChild(user_reply);
             }
 
+            block.className = 'comment-block';
             like.className = "comment-like-button";
             pfp.className = "pfp";
             replies.style.display = 'none';
@@ -238,9 +248,10 @@ function loadComments(c_section) {
             show.innerHTML = 'replies'
 
             block.append(pfp);
+            block.append(document.createElement('br'));
             block.append(info);
-            block.append(commenttext);
             block.append(like);
+            block.append(commenttext);
             block.append(reply);
             block.append(show);
             block.append(replies);

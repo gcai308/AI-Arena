@@ -37,6 +37,8 @@ html {
 
   input {
     background-color: #1f2734;
+    background-color: black;
+    color: white;
   }
 
 
@@ -155,7 +157,28 @@ h3 {
   max-height: 50px;
   max-width: 50px;
   border: 1px solid #9da4e6;
+  margin: 0;
 }
+
+.comment-block {
+  margin: 25px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-like-button {
+  height: 25px;
+  width: 25px;
+  padding: 0;
+  margin-left: 50%;
+}
+
+.comment-like-button img {
+  height: 20px;
+  width: 20px;
+}
+
+
 
 
 
