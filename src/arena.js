@@ -70,7 +70,7 @@ function loadImages() {
     function leftClick() {
         if (liked[0] == false) {
 
-            likes[0].innerHTML = '<img src="../images/heartFilled.png" />';
+            likes[0].innerHTML = '<img src="images/heartFilled.png" />';
             button_arrays[0].appendChild(like_labels[0])
             button_arrays[0].appendChild(comments[0])
             button_arrays[0].appendChild(comment_labels[0])
@@ -82,7 +82,7 @@ function loadImages() {
 
     function rightClick() {
         if (liked[1] == false) {
-            likes[1].innerHTML = '<img src="../images/heartFilled.png" />';
+            likes[1].innerHTML = '<img src="images/heartFilled.png" />';
             button_arrays[1].appendChild(like_labels[1])
             button_arrays[1].appendChild(comments[1])
             button_arrays[1].appendChild(comment_labels[1])
@@ -106,9 +106,9 @@ function loadImages() {
         c_sections[i].className = "comment-section";
         button_arrays[i].className = "button-array";
 
-        likes[i].innerHTML = '<img src="../images/heartEmpty.png" />';
-        comments[i].innerHTML = '<img src="../images/comment.png" />';
-        shares[i].innerHTML = '<img src="../images/share.png" />';
+        likes[i].innerHTML = '<img src="images/heartEmpty.png" />';
+        comments[i].innerHTML = '<img src="images/comment.png" />';
+        shares[i].innerHTML = '<img src="images/share.png" />';
         like_labels[i].innerHTML = Math.floor(Math.random() * 1000);
         comment_labels[i].innerHTML = Math.floor(Math.random() * 1000);
 
@@ -135,12 +135,13 @@ function loadImages() {
 }
 
 function loadComments(c_section) {
-    
+       const initial_y = window.scrollY; 
        let header = document.createElement('header');
        let textbox = document.createElement('input');
        let submit = document.createElement('button');
        let close = document.createElement('button');
        let num_comments = Math.floor(Math.random() * 10)
+
         textbox.type = "text";
         textbox.placeholder = "Add a comment...";
         header.innerHTML = 'Comments ';
@@ -161,7 +162,13 @@ function loadComments(c_section) {
             c_section.style.display = 'none';
         }
 
+        function scroll_listener() {
+            if (window.scrollY != initial_y)
+                c_section.style.display = 'none';
+        }
+
        for (let i = 0; i < num_comments; i++) {
+            window.addEventListener("scroll", scroll_listener)
             const comment = 'lorem ipsum dolor sit amet, consectetur adipiscing';
             const reply_text = 'lorem ipsum dolor sit amet';
             const username = 'guest'
@@ -191,10 +198,10 @@ function loadComments(c_section) {
 
             function comment_liked() {
                 if (is_liked == false) 
-                    like.innerHTML = '<img src="../images/heartFilled.png" />'
+                    like.innerHTML = '<img src="images/heartFilled.png" />'
 
                 else 
-                    like.innerHTML = '<img src="../images/heartEmpty.png" />'
+                    like.innerHTML = '<img src="images/heartEmpty.png" />'
                 is_liked = new Boolean(is_liked == false);
                 
             }
@@ -203,10 +210,10 @@ function loadComments(c_section) {
                 let is_reply_liked = new Boolean(false);
                 function reply_liked() {
                     if (is_reply_liked == false) 
-                        like_reply.innerHTML = '<img src="../images/heartFilled.png" />'
+                        like_reply.innerHTML = '<img src="images/heartFilled.png" />'
 
                     else 
-                        like_reply.innerHTML = '<img src="../images/heartEmpty.png" />'
+                        like_reply.innerHTML = '<img src="images/heartEmpty.png" />'
                     is_reply_liked = new Boolean(is_reply_liked == false);
                 
                 }
@@ -215,11 +222,11 @@ function loadComments(c_section) {
                 const user_reply = document.createElement('p');
                 const like_reply = document.createElement('button');
 
-                reply_pfp.src = '../images/pfp.png';
+                reply_pfp.src = 'images/pfp.png';
                 like_reply.className = 'comment-like-button';
 
                 reply_info.innerHTML = username + ' ' + date;
-                like_reply.innerHTML = '<img src="../images/heartEmpty.png" />';
+                like_reply.innerHTML = '<img src="images/heartEmpty.png" />';
                 like_reply.onclick = reply_liked;
                 
                 user_reply.innerHTML = reply_text;
@@ -242,8 +249,8 @@ function loadComments(c_section) {
 
             commenttext.innerHTML = comment;
             info.innerHTML = username + ' ' + date;
-            pfp.src = '../images/pfp.png';
-            like.innerHTML = '<img src="../images/heartEmpty.png" />';
+            pfp.src = 'images/pfp.png';
+            like.innerHTML = '<img src="images/heartEmpty.png" />';
             reply.innerHTML = 'Reply to comment'
             show.innerHTML = 'replies'
 
@@ -298,6 +305,7 @@ function loadImages(numImages = 10) {
     }   
 }
 */
+
 loadImages()
 
 // listen for scroll event and load more images if we reach the bottom of window
