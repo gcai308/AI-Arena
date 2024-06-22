@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>AI project</title>
+</head>
+<body onLoad="openDefault()">
+
+    <div class="tab">
+        <button class="tablinks active" onclick="openTab(event, 'Arena')">Arena</button>
+        <button class="tablinks" onclick="openTab(event, 'Single Model')">Single Model</button>
+        <button class="tablinks" onclick="openTab(event, 'Leaderboard')">Leaderboard</button>
+        <button class="tablinks" onclick="openTab(event, 'About Us')">About Us</button>
+    </div>
+      
+    <div id="Arena" class="tabcontent">
+        <div class = "topbar">
+            <button onclick="openArenaInstructions()">( i )</button>
+            <div id="Arena Info">
+                <button onclick="closeArenaInstructions()">( x )</button>
+                <h3>Arena Mode Info:</h3>
+                <p> - Each video diplayed is made by an anonymous, randomly chosen AI model</p>
+                <p> - After watching a video you enjoyed, you can like by clicking the heart icon</p>
+                <p> - You can keep generating new videos by scrolling down</p>
+                <p> - Be sure to check out the leaderboard to view the top video bot stats!</p>
+            </div>
+            <input id="Prompt Box" placeholder="Enter a prompt here" type="text"></input>
+            <button onclick="submitText()">Enter</button>
+        </div>
+        <div class="container" id = "arena_container">
+        </div> 
+        <script src="arena.js"></script>
+    </div>
+      
+    <div id="Single Model" class="tabcontent">
+        <section>
+            <h3>Single Model</h3>
+            <p>Instructions for Single Bot Mode:</p>
+            <p>This mode lets you freely access a selection of video bots all in one place.</p>
+            <p></p>
+            <p>Simply select your model from the drop-down menu, enter a prompt of your choice, and press Enter</p> 
+        </section>
+        <section>
+             <h3>Single Model</h3>
+            <p>Instructions for Single Bot Mode:</p>
+            <p>This mode lets you freely access a selection of video bots all in one place.</p>
+            <p></p>
+            <p>Simply select your model from the drop-down menu, enter a prompt of your choice, and press Enter</p> 
+        </section>
+        <section>
+            <h3>Single Model</h3>
+            <p>Instructions for Single Bot Mode:</p>
+            <p>This mode lets you freely access a selection of video bots all in one place.</p>
+            <p></p>
+            <p>Simply select your model from the drop-down menu, enter a prompt of your choice, and press Enter</p> 
+        </section>
+    </div>
+      
+    <div id="Leaderboard" class="tabcontent">
+        <h3>Leaderboard</h3>
+        
+        </div>   
+
+        <div id="About Us" class="tabcontent">
+            <h3>About Us</h3>
+            <p>About Us:</p>
+            <p></p>
+            <p>Videobot Arena is a free service allowing users to access, compare, and rank an assortment of text-to-video AI models. Voting provides valuable data for both consumers selecting models and companies looking to improve their products.</p>
+            <p></p>
+            <p>Project contributors: Michael Luo, [his fellow graduates], Jeffrey Luo, Garrett Cai, Ruofei Yang</p>
+        </div>  
+
+    <script src="tabs.js" ></script>
+</body>
+</html>
