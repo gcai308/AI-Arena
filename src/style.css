@@ -66,6 +66,7 @@ h3 {
   color: white;
 }
 .topbar {
+  padding: 6px 12px;
   background-color: #192232;
   color: white;
   position: fixed;
