@@ -5,15 +5,15 @@
 
 html {
   scroll-snap-type: block mandatory;
-  background-color: black;
+  background-color: #1f2734;
 }
 
 
 .tab {
     position: fixed;
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: black;
+    border: 1px solid #9da4e6;
+    background-color: #1f2734;
     top: 0;
     left: 0;
     z-index: 98;
@@ -24,7 +24,7 @@ html {
   }
   button {
     color: white;
-    background-color: black;
+    background-color: #1f2734;
   }
 
   label {
@@ -36,7 +36,7 @@ html {
   }
 
   input {
-    background-color: black;
+    background-color: #1f2734;
   }
 
 
@@ -44,7 +44,7 @@ html {
   .tab button {
     background-color: inherit;
     float: left;
-    border: 1px solid white;
+    border: 1px solid #9da4e6;
     color: white;
     outline: none;
     cursor: pointer;
@@ -58,18 +58,18 @@ html {
   display: none;
   margin-top: 50px;
   padding: 6px 12px;
-  border: 1px solid white;
-  background-color: black;
+  border: 1px solid #9da4e6;
+  background-color: #192232;
 }
 
 h3 {
   color: white;
 }
 .topbar {
-  background-color: black;
+  background-color: #192232;
   color: white;
   position: fixed;
-  border: 1px solid red;
+  border: 1px solid #9da4e6;
   left: 0%;
   top: 51px;
   z-index: 99;
@@ -90,8 +90,8 @@ h3 {
   display: flex;
   margin-top: 75px;
   width: 50%;
-  border: 1px solid white;
-  background-color: black;
+  border: 1px solid #9da4e6;
+  background-color: #10151e;
   bottom: 0;
 }
 
@@ -107,12 +107,12 @@ h3 {
 
   /* Change background color of buttons on hover */
   .tab button:hover {
-    background-color: #ddd;
+    background-color: #1b3c77;
   }
   
   /* Create an active/current tablink class */
   .tab button.active {
-    background-color: #ccc;
+    background-color: #11449c;
   }
   
 
@@ -120,7 +120,7 @@ h3 {
   width: 50px;
   height: 50px;
   margin: 0px 0px 10px 0px;
-  border: 1px solid white;
+  border: 1px solid #9da4e6;
 
 }
 
@@ -128,13 +128,13 @@ h3 {
   margin: auto 20px;
   width: 50px;
   height: 250px;
-  border: 1px solid white;
+  border: 1px solid #9da4e6;
   text-align: center;
 }
 
 
 .button-array button:hover {
-  background-color: #adadad;
+  background-color: #1b3c77;
 }
 
 .comment-section {
@@ -143,9 +143,9 @@ h3 {
   bottom: 0%;
   right: 0%;
   left: 50%;
-  border: 1px solid white;
+  border: 1px solid #9da4e6;
   overflow-y: auto;
-  background-color: black;
+  background-color: #192232;
   z-index: 100;
   padding: 5%;
 }
@@ -153,7 +153,7 @@ h3 {
 .comment-section img {
   max-height: 50px;
   max-width: 50px;
-  border: 1px solid white;
+  border: 1px solid #9da4e6;
 }
 
 
