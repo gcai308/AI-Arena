@@ -9,12 +9,28 @@ function loadImages() {
     let i=0;
 
     const sect = document.createElement('div');
-    sect.className = "scroller";
+    const images_div = document.createElement('div');
     container.appendChild(sect)
 
     const holders = [document.createElement('section'), document.createElement('section')];
 
-    const button_arrays = [document.createElement('span'), document.createElement('span')];
+    const button_array = document.createElement('div');
+
+    const vote_text = document.createElement('header'); 
+    vote_text.innerHTML = 'Which one is the better image (prompt adherence, semantics, and aesthetics)?';
+    const left = document.createElement('button');
+    const right = document.createElement('button');
+    const tie = document.createElement('button');
+
+    left.innerHTML = 'Left'; 
+    right.innerHTML = 'Right';
+    tie.innerHTML = 'tie';
+
+
+    button_array.className = 'button-array';
+    images_div.className = 'images-div';
+    sect.className = "scroller";
+
 
     let url='https://dog.ceo/api/breeds/image/random';
     if (prompt.length > 0) {
@@ -49,14 +65,23 @@ function loadImages() {
         }
     )
 
+    button_array.appendChild(left);
+    button_array.appendChild(right);
+    button_array.appendChild(tie);
+
+
 
         
     while(i < 2) {
 
         holders[i].className = "holder";
 
-        sect.appendChild(holders[i])
-        sect.appendChild(holders[i]);
+        images_div.appendChild(holders[i])
+        images_div.appendChild(holders[i]);
+        sect.appendChild(images_div);
+        sect.appendChild(vote_text);
+        sect.appendChild(button_array);
+
     
     
         i++;
