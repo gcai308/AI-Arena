@@ -46,10 +46,11 @@ input {
  /* Style the buttons inside the tab */
  .tab button {
     border-radius: 10px;
-    background-color: inherit;
     float: left;
     border: 3px solid #8089dc;
-    background-color: #1f2734;
+    /*background-color: #1f2734;*/
+    /*background-color: inherit;*/
+    background: linear-gradient(to bottom, #324055, #1f2734);
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -60,12 +61,12 @@ input {
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #4f57a5;
+    background: linear-gradient(to bottom, #4f57a5, #363c79);
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-    background-color: #8089dc;
+    background: linear-gradient(to bottom, #8089dc, #5d66b1);
 }
 
 /* Style the tab content */
@@ -165,6 +166,7 @@ h3 {
     height: 40px;
     margin: 0 5%;
     border: 3px solid #8089dc;
+    background: linear-gradient(to bottom, #324055, #1f2734);
 }
 
 .button-array {
@@ -175,7 +177,7 @@ h3 {
 
 
 .button-array button:hover {
-    background-color: #4f57a5;
+    background: linear-gradient(to bottom, #4f57a5, #363c79);
 }
 
 .comment-section {
