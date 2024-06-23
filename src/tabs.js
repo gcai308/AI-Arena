@@ -19,5 +19,4 @@ function openDefault() {
         tabcontent[i].style.display = "none";
     }
     document.getElementById('Arena').style.display = "block";
-    document.getElementById('Arena Info').style.display = "none";
 }

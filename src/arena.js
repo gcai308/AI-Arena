@@ -24,7 +24,7 @@ function loadImages() {
     left.innerHTML = 'Left'; 
     right.innerHTML = 'Right';
 
-    const img_prompt = "testing prompt " + sect.offsetTop;
+    const img_prompt = "preloaded prompt " + Math.floor(sect.offsetTop / window.innerHeight);
 
     tie.innerHTML = 'Tie';
 
@@ -43,7 +43,7 @@ function loadImages() {
     .then(data=> {
         // console.log(data.url)
         const img =  document.createElement('img');
-        if (prompt.length == 0) {
+        if (url == 'https://dog.ceo/api/breeds/image/random') {
             img.src = `${data.message}`
         } else {
             img.src = `${data[0].url}`
@@ -56,7 +56,7 @@ function loadImages() {
     .then(data=> {
         // console.log(data.url)
         const img =  document.createElement('img');
-        if (prompt.length == 0) {
+        if (url == 'https://dog.ceo/api/breeds/image/random') {
             img.src = `${data.message}`
         } else {
             img.src = `${data[0].url}`
