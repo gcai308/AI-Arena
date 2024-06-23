@@ -11,11 +11,12 @@ html {
 .tab {
     position: fixed;
     overflow: hidden;
-    border: 1px solid #9da4e6;
-    background-color: #1f2734;
+    background-color: #10151e;
     top: 0;
     left: 0;
+    width: 100vw;
     z-index: 101;
+    /*padding: 100px, 100px;*/
 }
   
 header {
@@ -44,18 +45,30 @@ input {
 
  /* Style the buttons inside the tab */
  .tab button {
+    border-radius: 10px;
     background-color: inherit;
     float: left;
-    border: 1px solid #9da4e6;
-    color: white;
+    border: 3px solid #8089dc;
+    background-color: #1f2734;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
+    margin-right: 15px; 
     transition: 0.3s;
     font-size: 17px;
 }
 
-    /* Style the tab content */
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #4f57a5;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #8089dc;
+}
+
+/* Style the tab content */
 .tabcontent { 
     display: none;
     margin-top: 50px;
@@ -74,7 +87,7 @@ h3 {
     background-color: #192232;
     color: white;
     position: fixed;
-    border: 1px solid #9da4e6;
+    border: 3px solid #9da4e6;
     top: 0px;
     left: 0px;
     right: 0px;
@@ -144,24 +157,14 @@ h3 {
     max-height: 80%;
     width: auto;
     height: auto; 
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-    background-color: #1b3c77;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-    background-color: #11449c;
-}
-  
+} 
 
 .button-array button {
+    border-radius: 10px;
     width: 10%;
     height: 40px;
     margin: 0 5%;
-    border: 1px solid #9da4e6;
+    border: 3px solid #8089dc;
 }
 
 .button-array {
@@ -172,7 +175,7 @@ h3 {
 
 
 .button-array button:hover {
-    background-color: #1b3c77;
+    background-color: #4f57a5;
 }
 
 .comment-section {
