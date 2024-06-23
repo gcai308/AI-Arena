@@ -7,7 +7,6 @@
     <title>AI project</title>
 </head>
 <body onLoad="openDefault()">
-
     <div class="tab">
         <button class="tablinks active" onclick="openTab(event, 'Arena')">Arena</button>
         <button class="tablinks" onclick="openTab(event, 'Single Model')">Single Model</button>
@@ -18,8 +17,8 @@
     <div id="Arena" class="tabcontent">
         <div class = "topbar">
             <div id = "topbar_buttons">
-                <button onclick="openArenaInstructions()">( i )</button>
-                <button id = "close_instructions_button" onclick="closeArenaInstructions()">( x )</button>
+                <button id="open_instructions_button" onclick="openArenaInstructions()">i</button>
+                <button id="close_instructions_button" onclick="closeArenaInstructions()">x</button>
                 <div id="arena_info">
                     <h3>Arena Mode Info:</h3>
                     <p> - Each video diplayed is made by an anonymous, randomly chosen AI model</p>
@@ -28,7 +27,7 @@
                     <p> - Be sure to check out the leaderboard to view the top video bot stats!</p>
                 </div>
             </div>
-            <div>
+            <div id = "prompt_interactions">
                 <input id="Prompt Box" placeholder="Enter a prompt here" type="text"></input>
                 <button onclick="submitText()">Enter</button>
             </div>

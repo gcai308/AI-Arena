@@ -6,17 +6,17 @@
 html {
     scroll-snap-type: block mandatory;
     background-color: #1f2734;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .tab {
     position: fixed;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: #10151e;
     top: 0;
     left: 0;
     width: 100vw;
     z-index: 101;
-    /*padding: 100px, 100px;*/
 }
   
 header {
@@ -37,14 +37,13 @@ p {
 }
 
 input {
-    background-color: #1f2734;
     background-color: black;
     color: white;
 }
 
 
- /* Style the buttons inside the tab */
- .tab button {
+/* Style the buttons inside the tab */
+.tab button {
     border-radius: 10px;
     float: left;
     border: 3px solid #8089dc;
@@ -57,11 +56,16 @@ input {
     margin-right: 15px; 
     transition: 0.3s;
     font-size: 17px;
+    /*z-index: 97;*/
+    box-shadow: 0px 5px 0px 0px #5d66b1;
+
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
     background: linear-gradient(to bottom, #4f57a5, #363c79);
+    margin-top: 5px;
+    box-shadow: none;
 }
 
 /* Create an active/current tablink class */
@@ -116,21 +120,51 @@ h3 {
 }
 
 #topbar_buttons button {
-    max-height: 25px;
-    margin-right: 20px;
-    flex-grow: 0;
+    border-radius: 100%;
+    border: 1px solid #8089dc;
+    background: linear-gradient(to bottom, #324055, #1f2734);
+    cursor: pointer;
+    margin-right: 15px; 
+    font-size: 17px;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+}
+
+#prompt_interactions button {
+    border-radius: 10px;
+    float: left;
+    border: 3px solid #8089dc;
+    background: linear-gradient(to bottom, #8089dc, #5d66b1);
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    margin-right: 15px; 
+    /*transition: 0.3s;*/
+    font-size: 17px;
+    box-shadow: 0px 5px 0px 0px #5d66b1;
+}
+
+#prompt_interactions button:active {
+    box-shadow: none;
+    margin-top: 5px;
+    margin-bottom: -5px;
+    background: linear-gradient(to bottom, #4f57a5, #363c79);
 }
 
 .topbar input {
     height: 81px;
     flex-grow: 10;
     max-width: 90%;
+    box-shadow: 0px 0px 5px 5px #324055;
+    border-radius: 10px;
+    margin-right: 20px;
 }
 
 .topbar button {
     flex-grow: 1;
 }
-
 
 .scroller {
     display: flex;
@@ -139,8 +173,6 @@ h3 {
     height: 100vh;
     scroll-snap-align: start;
 }
-
-
 
 .holder {
     position: relative;
@@ -158,12 +190,14 @@ h3 {
     margin: 20% auto 0% auto;
     width: 50%;
     height: 70%;
-} 
+}
+
 .holder label {
     display:none;
     color: white;
     margin: 20px;
 }
+
 .button-array button {
     border-radius: 10px;
     width: 100%;
@@ -171,6 +205,7 @@ h3 {
     margin: 0 5%;
     border: 3px solid #8089dc;
     background: linear-gradient(to bottom, #324055, #1f2734);
+    box-shadow: 0px 5px 0px 0px #5d66b1;
 }
 
 .button-array {
@@ -183,7 +218,6 @@ h3 {
 .button-array button:hover {
     background: linear-gradient(to bottom, #4f57a5, #363c79);
 }
-
 
 .scroller div {
   display: flex;
