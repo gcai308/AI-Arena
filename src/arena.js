@@ -7,7 +7,6 @@ let prompt = "";
 // get the images
 function loadImages() {
     let i=0;
-
     const sect = document.createElement('div');
     const images_div = document.createElement('div');
     container.appendChild(sect)
@@ -25,6 +24,8 @@ function loadImages() {
     left.innerHTML = 'Left'; 
     right.innerHTML = 'Right';
     tie.innerHTML = 'tie';
+
+    const img_prompt = "testing prompt " + sect.offsetTop;
 
 
     button_array.className = 'button-array';
@@ -83,9 +84,20 @@ function loadImages() {
         sect.appendChild(button_array);
 
     
-    
+        
         i++;
     } 
+
+    window.addEventListener("scroll", preload_input);
+
+    function preload_input() {
+        if (window.scrollY > sect.offsetTop - window.innerHeight && window.scrollY < sect.offsetTop) {
+            if (sect.offsetTop) {
+                prompt = img_prompt;
+                document.getElementById("Prompt Box").value = prompt;
+            }
+        }
+    }
 
 }
 
@@ -133,7 +145,7 @@ loadImages()
 
 // listen for scroll event and load more images if we reach the bottom of window
 window.addEventListener('scroll', ()=> {
-    console.log("scrolled", window.scrollY) //scrolled from top
+    //console.log("scrolled", window.scrollY) //scrolled from top
     console.log(window.innerHeight) //visible part of screen
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
         loadImages();
