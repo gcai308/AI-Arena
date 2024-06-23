@@ -1,3 +1,4 @@
+console.log(window.scrollY)
 const container = document.querySelector('.container');
 
 //const URL = 'https://dog.ceo/api/breeds/image/random'
@@ -7,6 +8,7 @@ let prompt = "";
 // get the images
 function loadImages() {
     let i=0;
+    const labels = [document.createElement('label'), document.createElement('label')];
     const sect = document.createElement('div');
     const images_div = document.createElement('div');
     container.appendChild(sect)
@@ -24,7 +26,7 @@ function loadImages() {
     left.innerHTML = 'Left'; 
     right.innerHTML = 'Right';
 
-    const img_prompt = "preloaded prompt " + Math.floor(sect.offsetTop / window.innerHeight);
+    let img_prompt = "preloaded prompt " + sect.offsetTop / window.innerHeight;
 
     tie.innerHTML = 'Tie';
 
@@ -49,6 +51,7 @@ function loadImages() {
             img.src = `${data[0].url}`
         }
         holders[0].appendChild(img)
+        holders[0].appendChild(labels[0]);
     })
 
     fetch(url)
@@ -62,6 +65,7 @@ function loadImages() {
             img.src = `${data[0].url}`
         }
         holders[1].appendChild(img)
+        holders[1].appendChild(labels[1]);
     })
 
     button_array.appendChild(left);
@@ -69,7 +73,7 @@ function loadImages() {
     button_array.appendChild(tie);
    
     while(i < 2) {
-
+        labels[i].innerHTML = 'model name here';
         holders[i].className = "holder";
 
         images_div.appendChild(holders[i])
@@ -82,16 +86,24 @@ function loadImages() {
     } 
 
     window.addEventListener("scroll", preload_input);
+    left.onclick = vote_listener;
+    right.onclick = vote_listener;
+    tie.onclick = vote_listener;
 
     function preload_input() {
-        if (window.scrollY > sect.offsetTop - window.innerHeight && window.scrollY < sect.offsetTop) {
-            if (sect.offsetTop) {
-                prompt = img_prompt;
-                document.getElementById("Prompt Box").value = prompt;
-            }
+        let rect = sect.getBoundingClientRect();
+        let height = rect.bottom - rect.top;
+        if (window.scrollY >= sect.offsetTop && window.scrollY < sect.offsetTop + height) { 
+            img_prompt = "preloaded prompt " + Math.ceil(sect.offsetTop / height);
+            prompt = img_prompt;
+            document.getElementById("Prompt Box").value = prompt;
         }
     }
 
+    function vote_listener() {
+        labels[0].style.display = "block";
+        labels[1].style.display = "block";
+    }
     i++;
 }
 
@@ -140,7 +152,7 @@ loadImages()
 // listen for scroll event and load more images if we reach the bottom of window
 window.addEventListener('scroll', ()=> {
     //console.log("scrolled", window.scrollY) //scrolled from top
-    console.log(window.innerHeight) //visible part of screen
+    //console.log(window.innerHeight) //visible part of screen
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
         loadImages();
     }
