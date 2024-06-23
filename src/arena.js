@@ -23,10 +23,10 @@ function loadImages() {
 
     left.innerHTML = 'Left'; 
     right.innerHTML = 'Right';
-    tie.innerHTML = 'tie';
 
     const img_prompt = "testing prompt " + sect.offsetTop;
 
+    tie.innerHTML = 'Tie';
 
     button_array.className = 'button-array';
     images_div.className = 'images-div';
@@ -39,40 +39,35 @@ function loadImages() {
     }
 
     fetch(url)
-        .then(response=>response.json())
-        .then(data=> {
-            // console.log(data.url)
-            const img =  document.createElement('img');
-            if (prompt.length == 0) {
-                img.src = `${data.message}`
-            } else {
-                img.src = `${data[0].url}`
-            }
-            holders[0].appendChild(img)
+    .then(response=>response.json())
+    .then(data=> {
+        // console.log(data.url)
+        const img =  document.createElement('img');
+        if (prompt.length == 0) {
+            img.src = `${data.message}`
+        } else {
+            img.src = `${data[0].url}`
         }
-    )
+        holders[0].appendChild(img)
+    })
 
     fetch(url)
-        .then(response=>response.json())
-        .then(data=> {
-            // console.log(data.url)
-            const img =  document.createElement('img');
-            if (prompt.length == 0) {
-                img.src = `${data.message}`
-            } else {
-                img.src = `${data[0].url}`
-            }
-            holders[1].appendChild(img)
+    .then(response=>response.json())
+    .then(data=> {
+        // console.log(data.url)
+        const img =  document.createElement('img');
+        if (prompt.length == 0) {
+            img.src = `${data.message}`
+        } else {
+            img.src = `${data[0].url}`
         }
-    )
+        holders[1].appendChild(img)
+    })
 
     button_array.appendChild(left);
     button_array.appendChild(right);
     button_array.appendChild(tie);
-
-
-
-        
+   
     while(i < 2) {
 
         holders[i].className = "holder";
@@ -82,8 +77,6 @@ function loadImages() {
         sect.appendChild(images_div);
         sect.appendChild(vote_text);
         sect.appendChild(button_array);
-
-    
         
         i++;
     } 
@@ -99,6 +92,7 @@ function loadImages() {
         }
     }
 
+    i++;
 }
 
 
