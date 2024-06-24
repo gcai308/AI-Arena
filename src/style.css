@@ -1,3 +1,24 @@
+:root {
+    /*
+    --background: #10151e;
+    --button_border: #8089dc;
+    --button_select: linear-gradient(to bottom, #8089dc, #5d66b1);
+    --button_hover: linear-gradient(to bottom, #4f57a5, #363c79);
+    --button_inactive: linear-gradient(to bottom, #324055, #1f2734);
+    --button_shadow: #5d66b1;
+    --main: #192232;
+    */
+    
+    --background: #191919;
+    --button_border: none;
+    --button_select: #21a1f1;
+    --button_hover: #21a1f1;
+    --button_inactive: #61dafb;
+    --button_shadow: none;
+    --main: #282828;
+    
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -5,14 +26,14 @@
 
 html {
     scroll-snap-type: block mandatory;
-    background-color: #1f2734;
+    background-color: #000;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .tab {
     position: fixed;
     /*overflow: hidden;*/
-    background-color: #10151e;
+    background-color: var(--background);
     top: 0;
     left: 0;
     width: 100vw;
@@ -25,7 +46,7 @@ header {
 
 button {
     color: white;
-    background-color: #1f2734;
+    background-color: #000;
 }
 
 label {
@@ -46,10 +67,10 @@ input {
 .tab button {
     border-radius: 10px;
     float: left;
-    border: 3px solid #8089dc;
+    border: 3px solid var(--button_border);
     /*background-color: #1f2734;*/
     /*background-color: inherit;*/
-    background: linear-gradient(to bottom, #324055, #1f2734);
+    background: var(--button_inactive);
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -57,20 +78,20 @@ input {
     transition: 0.3s;
     font-size: 17px;
     /*z-index: 97;*/
-    box-shadow: 0px 5px 0px 0px #5d66b1;
+    box-shadow: 0px 5px 0px 0px var(--button_shadow);
 
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background: linear-gradient(to bottom, #4f57a5, #363c79);
+    background: var(--button_hover);
     margin-top: 5px;
     box-shadow: none;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-    background: linear-gradient(to bottom, #8089dc, #5d66b1);
+    background: var(--button_select);
 }
 
 /* Style the tab content */
@@ -78,7 +99,7 @@ input {
     display: none;
     margin-top: 50px;
     padding: 6px 12px;
-    background-color: #192232;
+    background-color: var(--main);
 }
 
 h3 {
@@ -89,10 +110,10 @@ h3 {
     display: block;
     padding: 70px 20px 0px;
     margin: 0;
-    background-color: #192232;
+    background-color: var(--main);
     color: white;
     position: fixed;
-    border: 3px solid #9da4e6;
+    /*border: 3px solid #9da4e6;*/
     top: 0px;
     left: 0px;
     right: 0px;
@@ -121,8 +142,8 @@ h3 {
 
 #topbar_buttons button {
     border-radius: 100%;
-    border: 1px solid #8089dc;
-    background: linear-gradient(to bottom, #324055, #1f2734);
+    border: 1px solid var(--button_border);
+    background: var(--button_inactive);
     cursor: pointer;
     margin-right: 15px; 
     font-size: 17px;
@@ -135,31 +156,33 @@ h3 {
 #prompt_interactions button {
     border-radius: 10px;
     float: left;
-    border: 3px solid #8089dc;
-    background: linear-gradient(to bottom, #8089dc, #5d66b1);
+    border: 3px solid var(--button_border);
+    background: var(--button_select);
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
-    margin-right: 15px; 
+    margin-right: 15%; 
     /*transition: 0.3s;*/
     font-size: 17px;
-    box-shadow: 0px 5px 0px 0px #5d66b1;
+    box-shadow: 0px 5px 0px 0px var(--button_shadow);
+    max-width: 15%;
 }
 
 #prompt_interactions button:active {
     box-shadow: none;
-    margin-top: 5px;
-    margin-bottom: -5px;
-    background: linear-gradient(to bottom, #4f57a5, #363c79);
+    /*margin-top: 5px;
+    margin-bottom: -5px;*/
+    background: var(--button_hover);
 }
 
 .topbar input {
     height: 81px;
     flex-grow: 10;
-    max-width: 90%;
+    max-width: 55%;
     box-shadow: 0px 0px 5px 5px #324055;
     border-radius: 10px;
     margin-right: 20px;
+    margin-left: 15%;
 }
 
 .topbar button {
@@ -181,7 +204,7 @@ h3 {
     text-align: center;
     margin-top: 250px;
     width: 50%;
-    background-color: #10151e;
+    background-color: var(--background);
     bottom: 0;
 }
 
@@ -200,17 +223,21 @@ h3 {
 }
 
 .button-array button {
+    /*max-width: 20%;*/
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
     border-radius: 10px;
     width: 100%;
     height: 40px;
-    margin: 0 5%;
-    border: 3px solid #8089dc;
-    background: linear-gradient(to bottom, #324055, #1f2734);
-    box-shadow: 0px 5px 0px 0px #5d66b1;
+    margin: 0 1%;
+    border: 3px solid var(--button_border);
+    background: var(--button_inactive);
+    box-shadow: 0px 5px 0px 0px var(--button_shadow);
 }
 
 .button-array {
-    position: absolute;
+    /*position: absolute;*/
     display: inline-block;
     padding: 10px 20%;
     flex-grow: 1;
@@ -220,7 +247,7 @@ h3 {
 
 
 .button-array button:hover {
-    background: linear-gradient(to bottom, #4f57a5, #363c79);
+    background: var(--button_hover);
 }
 
 .scroller div {
