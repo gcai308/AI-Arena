@@ -1,0 +1,27 @@
+1. Install the 4 keys sent in email and create a folder containing them
+
+2. cd into this folder and enter the following commands
+
+    chmod 400 AILab.pem
+    chmod 400 test.pem
+    chmod 755 ailab     
+    chmod 755 aiproj
+
+3. go into your .zprofile file or .zshrc and enter the following code:
+
+    EXPORT PATH
+
+    KEY_DIR=<path to your key folder here>
+
+4. cd into the upload folder in this repo and enter the command below
+    ./upload.csh
+
+5. cd into the key folder
+    enter ./ailab to ssh into ec2
+    enter command:
+
+    sudo mv deploy/* /var/www/html/.
+
+
+
+

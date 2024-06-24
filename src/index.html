@@ -37,28 +37,24 @@
         <script src="arena.js"></script>
     </div>
       
-    <div id="Single Model" class="tabcontent">
-        <section>
-            <h3>Single Model</h3>
-            <p>Instructions for Single Bot Mode:</p>
-            <p>This mode lets you freely access a selection of video bots all in one place.</p>
-            <p></p>
-            <p>Simply select your model from the drop-down menu, enter a prompt of your choice, and press Enter</p> 
-        </section>
-        <section>
-             <h3>Single Model</h3>
-            <p>Instructions for Single Bot Mode:</p>
-            <p>This mode lets you freely access a selection of video bots all in one place.</p>
-            <p></p>
-            <p>Simply select your model from the drop-down menu, enter a prompt of your choice, and press Enter</p> 
-        </section>
-        <section>
-            <h3>Single Model</h3>
-            <p>Instructions for Single Bot Mode:</p>
-            <p>This mode lets you freely access a selection of video bots all in one place.</p>
-            <p></p>
-            <p>Simply select your model from the drop-down menu, enter a prompt of your choice, and press Enter</p> 
-        </section>
+    <div id="single-model" class="tabcontent">
+        <header>
+            <h1>Video Model Arena</h1>
+            <button id="themeToggle">Toggle Theme</button>
+          </header>
+          <main id="app">
+            <div class="controls">
+              <input type="text" id="promptInput" placeholder="Enter your prompt here">
+              <div class="button-group">
+                <button id="generateBtn">Generate</button>
+                <button id="surpriseMeBtn">Surprise Me!</button>
+              </div>
+            </div>
+            <div id="videoContainer">
+              <!-- Dynamic content will be injected here -->
+            </div>
+          </main>
+          <script src="single.js"></script>
     </div>
       
     <div id="Leaderboard" class="tabcontent">
