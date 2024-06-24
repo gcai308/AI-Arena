@@ -85,7 +85,7 @@ input {
 /* Change background color of buttons on hover */
 .tab button:hover {
     background: var(--button_hover);
-    margin-top: 5px;
+    /*margin-top: 5px;*/
     box-shadow: none;
 }
 
