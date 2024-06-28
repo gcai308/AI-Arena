@@ -3,7 +3,7 @@ const container = document.querySelector('.container');
 
 //const URL = 'https://dog.ceo/api/breeds/image/random'
 
-let prompt = "";
+let prompt = "preloaded prompt";
 
 // get the images
 function loadImages() {
@@ -11,27 +11,51 @@ function loadImages() {
     const labels = [document.createElement('label'), document.createElement('label')];
     const sect = document.createElement('div');
     const images_div = document.createElement('div');
+
+    const model_a = document.createElement('h3');
+    const model_b = document.createElement('h3');
+    const vid_prompt =  document.createElement('h3');
+
+
     container.appendChild(sect)
 
     const holders = [document.createElement('section'), document.createElement('section')];
 
     const button_array = document.createElement('div');
 
-    const vote_text = document.createElement('header'); 
-    vote_text.innerHTML = 'Which one is the better image (prompt adherence, semantics, and aesthetics)?';
+    const l_swipe = document.createElement('button');
+    const r_swipe = document.createElement('button');
+    const skip = document.createElement('button');
+
+    const gen = document.createElement('button');
     const left = document.createElement('button');
     const tie = document.createElement('button');
     const right = document.createElement('button');
+    const tab = document.createElement('button');
 
+    vid_prompt.innerHTML = prompt;
+    model_a.innerHTML = 'Model A';
+    model_b.innerHTML = 'Model B';
+
+    gen.innerHTML = '+';
     left.innerHTML = 'L';
     tie.innerHTML = 'T';
     right.innerHTML = 'R';
+    tab.innerHTML = 'H';
 
-    let img_prompt = "preloaded prompt " + sect.offsetTop / window.innerHeight;
+    l_swipe.innerHTML = 'A';
+    r_swipe.innerHTML = 'D';
+    skip.innerHTML = 'SKIP';
+
+
 
     button_array.className = 'button-array';
     images_div.className = 'images-div';
     sect.className = "scroller";
+    vid_prompt.className = 'vid-prompt';
+    l_swipe.className = 'onscreen-button';
+    r_swipe.className = 'onscreen-button';
+    skip.className = 'onscreen-button';
 
 
     let url='https://dog.ceo/api/breeds/image/random';
@@ -67,22 +91,38 @@ function loadImages() {
         holders[1].appendChild(labels[1]);
     })
 
+    model_a.style.bottom = '50%';
+    model_b.style.bottom = '50px';
+    vid_prompt.style.bottom = '0';
+    l_swipe.style.top = '25%';
+    l_swipe.style.left = '0';
+    r_swipe.style.top = '75%';
+    r_swipe.style.right = '0';
+    skip.style.top = '0';
+    skip.style.right = '0';
+
+    button_array.appendChild(gen);
     button_array.appendChild(left);
     button_array.appendChild(tie);
     button_array.appendChild(right);
+    button_array.appendChild(tab);
    
     while(i < 2) {
         labels[i].innerHTML = 'model name here';
         holders[i].className = "holder";
 
         images_div.appendChild(holders[i])
-        images_div.appendChild(holders[i]);
         sect.appendChild(images_div);
-        sect.appendChild(vote_text);
-        sect.appendChild(button_array);
         
         i++;
     } 
+    images_div.appendChild(model_a);
+    images_div.appendChild(model_b);
+    images_div.appendChild(vid_prompt);
+    images_div.appendChild(button_array);
+    images_div.appendChild(l_swipe);
+    images_div.appendChild(r_swipe);
+    images_div.appendChild(skip);
 
     window.addEventListener("scroll", preload_input);
     left.onclick = vote_listener;
@@ -90,13 +130,11 @@ function loadImages() {
     right.onclick = vote_listener;
 
     function preload_input() {
-        let rect = sect.getBoundingClientRect();
-        let height = rect.bottom - rect.top;
-        if (window.scrollY >= sect.offsetTop && window.scrollY < sect.offsetTop + height) { 
-            img_prompt = "preloaded prompt " + Math.ceil(sect.offsetTop / height);
-            prompt = img_prompt;
-            document.getElementById("Prompt Box").value = prompt;
-        }
+        // let rect = sect.getBoundingClientRect();
+        // let height = rect.bottom - rect.top;
+        // if (window.scrollY >= sect.offsetTop && window.scrollY < sect.offsetTop + height) { 
+        //     prompt = "preloaded prompt " + Math.ceil(sect.offsetTop / height);
+        // }
     }
 
     function vote_listener() {
@@ -114,18 +152,6 @@ function submitText() {
 
 function clear() {
     document.getElementById("arena_container").innerHTML = "";
-}
-
-function openArenaInstructions() {
-    document.getElementById('arena_info').style.display = "block";
-    document.getElementById('open_instructions_button').style.display = "none";
-    document.getElementById('close_instructions_button').style.display = "block";
-}
-
-function closeArenaInstructions() {
-    document.getElementById('arena_info').style.display = "none";
-    document.getElementById('close_instructions_button').style.display = "none";
-    document.getElementById('open_instructions_button').style.display = "block";
 }
 
 
