@@ -3,9 +3,26 @@ const container = document.querySelector('.container');
 
 //const URL = 'https://dog.ceo/api/breeds/image/random'
 
+let timer = null;
+let generating_queue = [];
+
 let prompt = "preloaded prompt";
 
+let current_vid = null;
+
+let scrollers = [];
+
+let prompt_container = document.getElementById('prompt_container');
+
+let prompt_box = document.getElementById('prompt_box');
+
+let generate_btn = document.getElementById('generate_btn');
+
+let popup = document.getElementById('popup');
+
+//$("body").css("overflow", "hidden");
 // get the images
+
 function loadImages() {
     let i=0;
     const labels = [document.createElement('label'), document.createElement('label')];
@@ -120,30 +137,82 @@ function loadImages() {
     images_div.appendChild(model_b);
     images_div.appendChild(vid_prompt);
     images_div.appendChild(button_array);
+    images_div.appendChild(prompt_container);
     images_div.appendChild(l_swipe);
     images_div.appendChild(r_swipe);
     images_div.appendChild(skip);
+    images_div.appendChild(popup);
 
-    window.addEventListener("scroll", preload_input);
     left.onclick = vote_listener;
     tie.onclick = vote_listener;
     right.onclick = vote_listener;
-
-    function preload_input() {
-        // let rect = sect.getBoundingClientRect();
-        // let height = rect.bottom - rect.top;
-        // if (window.scrollY >= sect.offsetTop && window.scrollY < sect.offsetTop + height) { 
-        //     prompt = "preloaded prompt " + Math.ceil(sect.offsetTop / height);
-        // }
-    }
+    tab.onclick = open_leaderboard;
+    gen.onclick = display_prompt;
+    generate_btn.onclick = generate;
 
     function vote_listener() {
         labels[0].style.display = "block";
         labels[1].style.display = "block";
     }
-    i++;
+    
+    sect.style.order = scrollers.length;
+    scrollers.push(sect);
 }
 
+function display_prompt() {
+    if (prompt_container.style.display != "flex") {
+        prompt_container.style.display = "flex";
+    }
+    else {
+        prompt_container.style.display = "none";
+    }
+}
+
+function generate() {
+    generating_queue.push(prompt_box.value);
+    prompt = prompt_box.value;
+    prompt_box.value = "";
+    add_generated();
+    display_prompt();
+    prompt = "preloaded prompt";
+}
+
+function add_generated() {
+    const nav_btn = document.createElement('button');
+    nav_btn.innerHTML = generating_queue[0];
+    loadImages();
+    scrollers[scrollers.length - 1].style.order = current_vid.style.order;
+    scrollers[scrollers.length - 1].className += " generated";
+    const generated_vid = scrollers[scrollers.length - 1];
+    nav_btn.onclick = scroll_to_vid;
+    popup.appendChild(nav_btn);
+    popup.style.display = 'flex';
+    generating_queue.shift();
+
+    function scroll_to_vid() {
+        window.scrollTo(0, generated_vid.offsetTop);
+    }
+
+    clearTimeout(timer);
+    
+    timer = setTimeout(() => {
+        popup.style.display = 'none';
+    }, 5000);
+}
+
+function open_leaderboard() {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById('Leaderboard').style.display = "block";
+    document.getElementById('leaderboard_tab').className += " active";
+}
 
 function submitText() {
     prompt = document.getElementById('Prompt Box').value;
@@ -183,5 +252,13 @@ window.addEventListener('scroll', ()=> {
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
         loadImages();
     }
-})
 
+    for (let i = 0; i < scrollers.length; i++) {
+        let sect = scrollers[i];
+        let rect = sect.getBoundingClientRect();
+        let height = rect.bottom - rect.top;
+        if (window.scrollY >= sect.offsetTop && window.scrollY < sect.offsetTop + height) {
+            current_vid = sect;
+        }
+    }
+})

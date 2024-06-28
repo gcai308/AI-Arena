@@ -6,17 +6,26 @@
     <link rel="stylesheet" href="style.css">
     <title>Video Bot Arena</title>
 </head>
-<body onLoad="openDefault()">
+<body id = "body" onLoad="openDefault()">
     <div class="tab">
         <button class="tablinks active" onclick="openTab(event, 'Arena')">Arena</button>
         <button class="tablinks" onclick="openTab(event, 'single-model')">Single Model</button>
-        <button class="tablinks" onclick="openTab(event, 'Leaderboard')">Leaderboard</button>
+        <button id = "leaderboard_tab" class="tablinks" onclick="openTab(event, 'Leaderboard')">Leaderboard</button>
         <button class="tablinks" onclick="openTab(event, 'About Us')">About Us</button>
     </div>
       
     <div id="Arena" class="tabcontent">
         <div class="container" id="arena_container">
-        </div> 
+          <div id = "popup">
+            <h3>
+              Prompt Generated! <br> View your generations:
+            </h3>
+          </div>
+          <div id= "prompt_container"> 
+            <input id = "prompt_box" class="prompt-box" placeholder = "Enter prompt to generate..."  type = "text">
+            <button id = "generate_btn">Generate</button>
+          </div>
+          </div> 
         <script src="arena.js"></script>
     </div>
       
