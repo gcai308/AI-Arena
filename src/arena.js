@@ -20,15 +20,14 @@ function loadImages() {
     const vote_text = document.createElement('header'); 
     vote_text.innerHTML = 'Which one is the better image (prompt adherence, semantics, and aesthetics)?';
     const left = document.createElement('button');
-    const right = document.createElement('button');
     const tie = document.createElement('button');
+    const right = document.createElement('button');
 
-    left.innerHTML = 'Left'; 
-    right.innerHTML = 'Right';
+    left.innerHTML = 'L';
+    tie.innerHTML = 'T';
+    right.innerHTML = 'R';
 
     let img_prompt = "preloaded prompt " + sect.offsetTop / window.innerHeight;
-
-    tie.innerHTML = 'Tie';
 
     button_array.className = 'button-array';
     images_div.className = 'images-div';
@@ -69,8 +68,8 @@ function loadImages() {
     })
 
     button_array.appendChild(left);
-    button_array.appendChild(right);
     button_array.appendChild(tie);
+    button_array.appendChild(right);
    
     while(i < 2) {
         labels[i].innerHTML = 'model name here';
@@ -87,8 +86,8 @@ function loadImages() {
 
     window.addEventListener("scroll", preload_input);
     left.onclick = vote_listener;
-    right.onclick = vote_listener;
     tie.onclick = vote_listener;
+    right.onclick = vote_listener;
 
     function preload_input() {
         let rect = sect.getBoundingClientRect();
