@@ -2,6 +2,7 @@ console.log(window.scrollY)
 const container = document.querySelector('.container');
 
 //const URL = 'https://dog.ceo/api/breeds/image/random'
+let scrolling = new Boolean(false);
 
 let timer = null;
 let generating_queue = [];
@@ -25,7 +26,6 @@ let popup = document.getElementById('popup');
 
 function loadImages() {
     let i=0;
-    const labels = [document.createElement('label'), document.createElement('label')];
     const sect = document.createElement('div');
     const images_div = document.createElement('div');
 
@@ -125,7 +125,6 @@ function loadImages() {
     button_array.appendChild(tab);
    
     while(i < 2) {
-        labels[i].innerHTML = 'model name here';
         holders[i].className = "holder";
 
         images_div.appendChild(holders[i])
@@ -143,16 +142,21 @@ function loadImages() {
     images_div.appendChild(skip);
     images_div.appendChild(popup);
 
-    left.onclick = vote_listener;
-    tie.onclick = vote_listener;
-    right.onclick = vote_listener;
+    left.onclick = left_vote;
+    tie.onclick = tie_vote;
+    right.onclick = right_vote;
     tab.onclick = open_leaderboard;
     gen.onclick = display_prompt;
     generate_btn.onclick = generate;
+    skip.onclick = toggle_scrolling;
 
-    function vote_listener() {
-        labels[0].style.display = "block";
-        labels[1].style.display = "block";
+    function left_vote() {
+    }
+
+    function right_vote() {
+    }
+
+    function tie_vote() {
     }
     
     sect.style.order = scrollers.length;
@@ -166,6 +170,10 @@ function display_prompt() {
     else {
         prompt_container.style.display = "none";
     }
+}
+
+function toggle_scrolling() {
+    scrolling = true;
 }
 
 function generate() {
@@ -224,26 +232,8 @@ function clear() {
 }
 
 
-/*
-function loadImages(numImages = 10) {
-    let i=0;
-    while(i < numImages) {
-        fetch('https://dog.ceo/api/breeds/image/random')
-        .then(response=>response.json())
-        .then(data=> {
-            // console.log(data.message)
-            const img =  document.createElement('iframe');
-            img.width = 600;
-	    img.height = 400;
-            img.src = "https://www.youtube.com/embed/tgbNymZ7vqY"
-            container.appendChild(img)
-        })
-        i++;
-    }   
-}
-*/
-
 loadImages()
+current_vid = scrollers[0];
 
 // listen for scroll event and load more images if we reach the bottom of window
 window.addEventListener('scroll', ()=> {
@@ -257,8 +247,17 @@ window.addEventListener('scroll', ()=> {
         let sect = scrollers[i];
         let rect = sect.getBoundingClientRect();
         let height = rect.bottom - rect.top;
+
+        if (scrolling == false) {
+            window.scrollTo(0, current_vid.offsetTop);
+        }
+
         if (window.scrollY >= sect.offsetTop && window.scrollY < sect.offsetTop + height) {
-            current_vid = sect;
+            if (current_vid != sect) {
+                scrolling = new Boolean(false);
+                current_vid = sect;
+            }
         }
     }
+
 })
